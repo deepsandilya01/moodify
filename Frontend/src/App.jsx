@@ -1,12 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import FaceExpression from "./features/Expression/components/FaceExpression";
+import { RouterProvider } from "react-router";
+import { router } from "./app.routes";
+import "./features/shared/styles/global.scss";
+import { AuthProvider } from "./features/auth/auth.context";
+import { SongContextProvider } from "./features/home/song.context";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <FaceExpression />;
+  return (
+    <AuthProvider>
+      <SongContextProvider>
+        <RouterProvider router={router} />
+      </SongContextProvider>
+    </AuthProvider>
+  );
 }
 
 export default App;
